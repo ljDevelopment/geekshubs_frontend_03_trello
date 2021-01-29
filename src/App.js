@@ -9,9 +9,6 @@ function App(props) {
     <div className="App">
         <pre>
 			<Table />
-			<button onClick={() => props.addRandomTodo()}>
-				add todo
-			</button>
 			{
 				JSON.stringify(props, null, 2)
 			}
@@ -23,13 +20,7 @@ function App(props) {
 const mapStateToProps = state => ({state : state}) 
 const mapDispatchToProps = (dispacth) => ({
 
-	addRandomTodo: () => dispacth({
-		type: 'ADD_TODO',
-		payload: 'borra esta tarea'
-	})
 })
-const connectAccp = connect(
-	mapStateToProps, 
-	mapDispatchToProps)(App)
 
+const connectAccp = connect(mapStateToProps, mapDispatchToProps)(App)
 export default connectAccp;
