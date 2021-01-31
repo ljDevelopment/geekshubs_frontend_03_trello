@@ -2,7 +2,7 @@ const initialState = {
 	board : [
 		{
 			id : 0,
-			items :
+			cards :
 			[
 				{
 					id: 0,
@@ -30,7 +30,7 @@ function reducer(state = initialState, action) {
 					(element) => {
 						if (element.id === action.listId)
 						{
-							element.items.push(action.payload);
+							element.cards.push(action.payload);
 						}
 						return element;
 					}
@@ -44,7 +44,7 @@ function reducer(state = initialState, action) {
 					...state.board,
 					{
 						id: action.id,
-						items: []
+						cards: []
 					}
 				]
 			}

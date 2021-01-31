@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './List.css';
-import Item from './Item'
+import Card from './Card'
 
 function List(props) {
 
@@ -11,8 +11,8 @@ function List(props) {
 			<ul>
 
 			{JSON.stringify(props)}<br/>
-				{props.items.map((item, i) => (
-					<Item item={item} key={i} />
+				{props.cards.map((c, i) => (
+					<Card card={c} key={i} />
 				))}
 			</ul>
 		</li>
@@ -20,7 +20,7 @@ function List(props) {
 }
 const mapStateToProps = (state, props) => ({
 	board: state.board,
-	items : state.board.find(e => e.id === props.listId).items
+	cards : state.board.find(e => e.id === props.listId).cards
 });
 
 const mapDispatchToProps = (dispatch) => ({
