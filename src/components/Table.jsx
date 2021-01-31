@@ -12,7 +12,7 @@ function Table(props) {
 				<button onClick={() => props.addList()}>+ Add another list</button>
 			<ul>
 				{props.table.map((list, i) => (
-					<List list={list} key={i}/>
+					<List listId={list.id} key={i}/>
 				))}
 			</ul>
 		</div>

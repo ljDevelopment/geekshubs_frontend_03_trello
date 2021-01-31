@@ -5,10 +5,12 @@ const initialState = {
 			items :
 			[
 				{
+					id: 0,
 					text: 'todo00',
 					completed: false
 				},
 				{
+					id: 1,
 					text: 'todo01',
 					completed: false
 				}
