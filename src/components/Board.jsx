@@ -1,17 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './Table.css';
+import './Board.css';
 import List from './List'
 
-function Table(props) {
+function Board(props) {
 	console.log(
 		JSON.stringify(props, null, 2)
 	);
 	return (
-		<div className='controls'>
+		<div className='board'>
 				<button onClick={() => props.addList()}>+ Add another list</button>
 			<ul>
-				{props.table.map((list, i) => (
+				{props.board.map((list, i) => (
 					<List listId={list.id} key={i}/>
 				))}
 			</ul>
@@ -20,7 +20,7 @@ function Table(props) {
 }
 
 const mapStateToProps = (state) => ({
-	table: state.table,
+	board: state.board
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -34,5 +34,5 @@ const mapDispatchToProps = (dispatch) => ({
 	},
 });
 
-const connected = connect(mapStateToProps, mapDispatchToProps)(Table);
+const connected = connect(mapStateToProps, mapDispatchToProps)(Board);
 export default connected;

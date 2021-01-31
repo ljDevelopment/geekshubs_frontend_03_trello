@@ -19,8 +19,8 @@ function List(props) {
 	);
 }
 const mapStateToProps = (state, props) => ({
-	table: state.table,
-	items : state.table.find(e => e.id === props.listId).items
+	board: state.board,
+	items : state.board.find(e => e.id === props.listId).items
 });
 
 const mapDispatchToProps = (dispatch) => ({

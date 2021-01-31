@@ -2,13 +2,13 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import {connect} from 'react-redux';
-import Table from './components/Table'
+import Board from './components/Board'
 
 function App(props) {
   return (
     <div className="App">
         <pre>
-			<Table />
+			<Board />
 			{
 				JSON.stringify(props, null, 2)
 			}

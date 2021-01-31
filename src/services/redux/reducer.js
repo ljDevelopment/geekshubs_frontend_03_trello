@@ -1,5 +1,5 @@
 const initialState = {
-	table : [
+	board : [
 		{
 			id : 0,
 			items :
@@ -26,7 +26,7 @@ function reducer(state = initialState, action) {
 		case 'ADD_ITEM':
 			return {
 				...state,
-				table : state.table.map(
+				board : state.board.map(
 					(element) => {
 						if (element.id === action.listId)
 						{
@@ -40,8 +40,8 @@ function reducer(state = initialState, action) {
 		case 'ADD_LIST':
 			return {
 				...state,
-				table : [
-					...state.table,
+				board : [
+					...state.board,
 					{
 						id: action.id,
 						items: []
