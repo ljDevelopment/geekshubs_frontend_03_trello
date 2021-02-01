@@ -5,9 +5,8 @@ import './Card.css';
 function Card(props) {
 
 	return (
-		<li>
-			<b>{props.listid}</b>
-			{JSON.stringify(props)}
+		<li class="Card">
+			{props.card.text}
 		</li>
 	);
 }

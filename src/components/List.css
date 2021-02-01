@@ -1,3 +1,31 @@
 .list {
-	background-color: #c4c9cc;
+	background-color: #ebecf0;
+	border-radius: 3px;
 }
+
+.list ul {
+	list-style: none;
+	padding: 0;
+}
+
+.addCardButton {
+	height: 20px;
+	line-height: 20px;
+	padding: 0.5em;
+	margin: 0.5em 0 0.5em 0;
+}
+
+.addCardButton a {
+	color: #5e6c84;
+	text-decoration: none;
+}
+
+.addCardButton a:hover {
+	color: #172b4d;
+}
+
+.addCardButton:hover {
+	background-color: rgba(9,30,66,.08);
+	color: #172b4d;
+}
+

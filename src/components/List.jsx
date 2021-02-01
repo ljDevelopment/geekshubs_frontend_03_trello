@@ -7,11 +7,13 @@ function List(props) {
 
 	return (
 		<li class="list">
-			<button onClick={() => props.addItem(props.listId)}>+</button>
 			<ul>
 				{props.cards.map((c, i) => (
 					<Card card={c} key={i} />
 				))}
+				<li class="addCardButton">
+			<a onClick={() => props.addItem(props.listId)} href="#">+ Add another card</a>
+				</li>
 			</ul>
 		</li>
 	);
