@@ -6,11 +6,9 @@ import Card from './Card'
 function List(props) {
 
 	return (
-		<li>
-			<button onClick={() => props.addItem(props.listId)}>+ {props.listId}</button>
+		<li class="list">
+			<button onClick={() => props.addItem(props.listId)}>+</button>
 			<ul>
-
-			{JSON.stringify(props)}<br/>
 				{props.cards.map((c, i) => (
 					<Card card={c} key={i} />
 				))}

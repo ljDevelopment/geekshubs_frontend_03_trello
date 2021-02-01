@@ -7,8 +7,8 @@ import Board from './components/Board'
 function App(props) {
   return (
     <div className="App">
+		<Board />
         <pre>
-			<Board />
 			{
 				JSON.stringify(props, null, 2)
 			}

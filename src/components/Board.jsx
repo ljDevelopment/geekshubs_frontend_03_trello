@@ -9,11 +9,13 @@ function Board(props) {
 	);
 	return (
 		<div className='board'>
-				<button onClick={() => props.addList()}>+ Add another list</button>
 			<ul>
 				{props.board.map((list, i) => (
 					<List listId={list.id} key={i}/>
 				))}
+				<li>
+					<a id="addListButton" onClick={() => props.addList()} href="#">+ Add another list</a>
+				</li>
 			</ul>
 		</div>
 	);
