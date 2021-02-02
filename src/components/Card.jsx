@@ -5,7 +5,7 @@ import './Card.css';
 function Card(props) {
 
 	return (
-		<li class="Card">
+		<li className="Card">
 			{props.card.text}
 		</li>
 	);

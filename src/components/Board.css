@@ -12,6 +12,21 @@
 	min-width: 272px;
 }
 
+#addListColumn 
+{
+	background-color: hsla(0,0%,100%,.24);
+	border-radius: 3px;
+}
+
 #addListButton {
 	border-radius: 3px;
+}
+
+#addListButton a {
+	color: #fff;
+	text-decoration: none;
+}
+
+#addListButton:hover {
+	background-color: rgba(9,30,66,.08);
 }

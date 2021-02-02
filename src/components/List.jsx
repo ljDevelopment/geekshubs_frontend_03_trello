@@ -6,12 +6,12 @@ import Card from './Card'
 function List(props) {
 
 	return (
-		<li class="list">
+		<li className="list">
 			<ul>
 				{props.cards.map((c, i) => (
 					<Card card={c} key={i} />
 				))}
-				<li class="addCardButton">
+				<li className="addCardButton">
 			<a onClick={() => props.addItem(props.listId)} href="#">+ Add another card</a>
 				</li>
 			</ul>
