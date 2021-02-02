@@ -41,6 +41,7 @@ function reducer(state = initialState, action) {
 		case 'ADD_LIST':
 			return {
 				...state,
+				addListFormVisible : false,
 				board : [
 					...state.board,
 					{

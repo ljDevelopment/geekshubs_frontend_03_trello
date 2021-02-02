@@ -3,11 +3,34 @@ import { connect } from 'react-redux';
 import './Board.css';
 import List from './List'
 
+const introKeyCode = 13;
+const escapeKeyCode = 27;
 
 function Board(props) {
 	console.log(
 		JSON.stringify(props, null, 2)
 	);
+
+	const onSubmitHandle = (e) => {
+		e.preventDefault();
+		props.addList();
+	}
+	const onKeyUpHandle = (e) => {
+		console.log('key up', e.keyCode);
+
+		if (e.keyCode === escapeKeyCode) {
+			props.hideAddListForm();
+			e.target.value = '';
+			return;
+		}
+
+		if (e.keyCode === introKeyCode && e.target.value.trim()) {
+			console.log("intro");
+			props.addList(e.target.value.trim());
+			e.target.value = '';
+		}
+	};
+
 	return (
 		<div className='board'>
 			<ul>
@@ -15,7 +38,7 @@ function Board(props) {
 					<List listId={list.id} key={i} />
 				))}
 				<li id="addListColumn">
-					{props.addListFormVisible ? AddListForm(props) : AddListButton(props)}
+					{props.addListFormVisible ? AddListForm(props, onSubmitHandle, onKeyUpHandle) : AddListButton(props)}
 				</li>
 			</ul>
 		</div>
@@ -32,13 +55,13 @@ function AddListButton(props) {
 	);
 }
 
-function AddListForm(props) {
+function AddListForm(props, handleSubmit, onKeyUpHandle) {
 
 	return (
 
-		<form id="addListForm">
-			<input type="text" name="newListName" id="newListName" placeholder="Introduce the name of the list" />
-			<input type="button" value="Add list" />
+		<form id="addListForm" onSubmit={handleSubmit}>
+			<input type="text" name="newListName" id="newListName" placeholder="Introduce the name of the list" onKeyUp={(e) => onKeyUpHandle(e)} />
+			<input type="submit" value="Add list" />
 			<input type="button" value="X" onClick={() => props.hideAddListForm()} />
 		</form>
 	);
