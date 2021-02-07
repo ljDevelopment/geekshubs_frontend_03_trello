@@ -11,28 +11,3 @@
 	width: 272px;
 	min-width: 272px;
 }
-
-#addListColumn 
-{
-	background-color: hsla(0,0%,100%,.24);
-	border-radius: 3px;
-}
-
-#addListColumn:hover {
-	background-color: rgba(9,30,66,.08);
-	cursor: pointer;
-}
-
-#addListButton {
-	color: #fff;
-	background-color: rgba(0,0,0,0);
-    border: 0;
-    width: 100%;
-    text-align: left;
-    height: 100%;
-    margin: 0;
-}
-
-#addListButton:hover {
-	cursor: pointer;
-}

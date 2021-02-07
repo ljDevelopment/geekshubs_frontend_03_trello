@@ -14,17 +14,12 @@ class AddListForm extends React.Component {
 			value: '',
 			addListFormVisible: false
 		};
-
-		console.log(
-			JSON.stringify(this, null, 2)
-		);
 	}
 
 	onSubmitHandle = (e) => {
 
-		console.log(this);
-
 		e.preventDefault();
+
 		if (this.state.value && this.state.value.trim()) {
 			this.props.addList(this.state.value.trim());
 		}
@@ -32,6 +27,14 @@ class AddListForm extends React.Component {
 
 	onKeyUpHandle = (e) => {
 		console.log('key up', e.keyCode);
+		
+		if (e.keyCode === escapeKeyCode) {
+			this.setState({
+				...this.state,
+				value: ""
+			});
+			this.props.hideAddListForm();
+		}
 
 		this.setState({
 			...this.state,
@@ -42,25 +45,27 @@ class AddListForm extends React.Component {
 	RenderAddListButton = (props) => {
 
 		return (
-			<input id="addListButton" type="button" onClick={() => props.showAddListForm()} value="+ Add Another list"/>
+			<input id="addListButton" type="button" onClick={() => props.showAddListForm()} value="+ Add Another list" />
 		);
 	}
 
 	RenderAddListForm = (props) => {
 
 		return (
-	
+
 			<form id="addListForm" onSubmit={this.onSubmitHandle}>
-				<input type="text" name="newListName" id="newListName" placeholder="Introduce the name of the list" onKeyUp={(e) => this.onKeyUpHandle(e)} />
-				<input type="submit" value="Add list" />
-				<input type="button" value="X" onClick={() => props.hideAddListForm()} />
+				<input type="text" name="newListName" id="newListName" placeholder="Introduce the name of the list..." onKeyUp={(e) => this.onKeyUpHandle(e)} />
+				<div id="addListFormButtons">
+					<input type="submit" id="addListSubmit" value="Add list" />
+					<input type="button" id="addListCloseButton" value="X" onClick={() => props.hideAddListForm()} />
+				</div>
 			</form>
 		);
 	}
 
 	render() {
 		return (
-			<li id="addListColumn">
+			<li id="addListColumn" className={this.props.addListFormVisible ? "addListColumn" : "addListColumnIdle"}>
 				{this.props.addListFormVisible ? this.RenderAddListForm(this.props) : this.RenderAddListButton(this.props)}
 			</li>
 		)
