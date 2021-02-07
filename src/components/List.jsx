@@ -7,7 +7,7 @@ function List(props) {
 
 	return (
 		<li className="list">
-			{props.list.title}
+			<div className="listTitle">{props.list.title}</div>
 			<ul>
 				{props.cards.map((c, i) => (
 					<Card card={c} key={i} />
