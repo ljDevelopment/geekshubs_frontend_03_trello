@@ -3,6 +3,7 @@ const initialState = {
 	board : [
 		{
 			id : 0,
+			title: "list1",
 			cards :
 			[
 				{
@@ -45,7 +46,7 @@ function reducer(state = initialState, action) {
 				board : [
 					...state.board,
 					{
-						id: action.id,
+						...action.payload,
 						cards: []
 					}
 				]

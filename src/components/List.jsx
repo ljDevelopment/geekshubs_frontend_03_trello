@@ -7,12 +7,13 @@ function List(props) {
 
 	return (
 		<li className="list">
+			{props.list.title}
 			<ul>
 				{props.cards.map((c, i) => (
 					<Card card={c} key={i} />
 				))}
 				<li className="addCardButton">
-			<a onClick={() => props.addItem(props.listId)} href="#">+ Add another card</a>
+					<a onClick={() => props.addItem(props.listId)} href="#">+ Add another card</a>
 				</li>
 			</ul>
 		</li>
@@ -20,7 +21,8 @@ function List(props) {
 }
 const mapStateToProps = (state, props) => ({
 	board: state.board,
-	cards : state.board.find(e => e.id === props.listId).cards
+	list: state.board.find(e => e.id === props.listId),
+	cards: state.board.find(e => e.id === props.listId).cards
 });
 
 const mapDispatchToProps = (dispatch) => ({
