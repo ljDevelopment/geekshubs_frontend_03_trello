@@ -8,11 +8,6 @@ function App(props) {
   return (
     <div className="App">
 		<Board />
-        <pre>
-			{
-				JSON.stringify(props, null, 2)
-			}
-		</pre>
     </div>
   );
 }

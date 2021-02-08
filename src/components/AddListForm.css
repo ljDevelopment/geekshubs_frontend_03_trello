@@ -1,6 +1,7 @@
 #addListColumn
 {
 	border-radius: 3px;
+	padding: 0;
 }
 
 #addListColumn *
@@ -12,6 +13,7 @@
 {
 	background-color: #ebecf0;
 	border-radius: 3px;
+	padding: 10px;
 }
 
 .addListColumnIdle {
@@ -30,10 +32,15 @@
     text-align: left;
     height: 100%;
     margin: 0;
+	padding: 10px;
 }
 
 #addListButton:hover {
 	cursor: pointer;
+}
+
+#addListForm {
+	padding: 10px;
 }
 
 

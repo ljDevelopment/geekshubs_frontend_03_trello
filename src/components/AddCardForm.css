@@ -1,39 +1,43 @@
-.addCardColumn
+.addCard
 {
 	border-radius: 3px;
 	background-color: #ebecf0;
 	border-radius: 3px;
+	margin-top: 0.5em;
 }
 
-.addCardColumn *
+.addCard *
 {
 	border-radius: 3px;
 }
 
-.addCardColumnIdle {
-	background-color: hsla(0,0%,100%,.24);
+.addCardIdle {
+	background-color: rgba(0,0,0,0);
+	margin-top: 0.5em;
 }
 
-.addCardColumnIdle:hover {
+.addCardIdle:hover {
 	background-color: rgba(9,30,66,.08);
 }
 
 .addCardButton {
-	color: #fff;
+	color: #5e6c84;
 	background-color: rgba(0,0,0,0);
     border: 0;
     width: 100%;
     text-align: left;
     height: 100%;
     margin: 0;
+	border-radius: 3px;
 }
 
 .addCardButton:hover {
 	cursor: pointer;
+	color: #172b4d;
 }
 
 
-#newListName {
+.newCardName {
 	background-color: #fff;
     box-shadow: inset 0 0 0 2px #0079bf;
     display: block;
@@ -45,17 +49,17 @@
 	border: none;
 }
 
-#addListFormButtons {
+.addCardFormButtons {
 	cursor: default;
 	margin-top: 3px;
 	height: 32px;
 }
 
-#addListFormButtons * {
+.addCardFormButtons * {
 	height: 100%;
 }
 
-#addListSubmit {
+.addCardSubmit {
 	background-color: #5aac44;
     box-shadow: none;
     border: none;
@@ -65,11 +69,11 @@
 	cursor: pointer;
 }
 
-#addListSubmit:hover {
+.addCardSubmit:hover {
 	background-color: #61bd4f;
 }
 
-#addListCloseButton {
+.addCardCloseButton {
 	box-shadow: none;
     border: none;	
 	background-color: rgba(0,0,0,0);

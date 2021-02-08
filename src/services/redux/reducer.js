@@ -1,5 +1,4 @@
 const initialState = {
-	addListFormVisible: false,
 	board : [
 		{
 			id : 0,
@@ -42,7 +41,6 @@ function reducer(state = initialState, action) {
 		case 'ADD_LIST':
 			return {
 				...state,
-				addListFormVisible : false,
 				board : [
 					...state.board,
 					{
@@ -52,18 +50,6 @@ function reducer(state = initialState, action) {
 				]
 			}
 	
-		case 'ADD_LIST_FORM_SHOW':
-				return {
-					...state,
-					addListFormVisible: true
-				}	
-
-		case 'ADD_LIST_FORM_HIDE':
-				return {
-					...state,
-					addListFormVisible : false
-				}	
-
 		default:
 			return state;
 	}

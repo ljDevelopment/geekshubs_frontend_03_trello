@@ -11,7 +11,7 @@ class AddCardForm extends React.Component {
 
 		this.state = {
 			value: '',
-			addCardFormVisible: false
+			formVisible: false
 		};
 	}
 
@@ -21,7 +21,7 @@ class AddCardForm extends React.Component {
 
 		if (this.state.value && this.state.value.trim()) {
 			this.props.addCard(this.props.list.id, this.state.value.trim());
-			this.setShowAddCardForm(false);
+			this.setShowForm(false);
 		}
 	}
 
@@ -32,7 +32,7 @@ class AddCardForm extends React.Component {
 				...this.state,
 				value: ""
 			});
-			this.setShowAddCardForm(false);
+			this.setShowForm(false);
 			return;
 		}
 
@@ -42,17 +42,19 @@ class AddCardForm extends React.Component {
 		});
 	};
 
-	setShowAddCardForm = (show) => {
+	setShowForm = (show) => {
 		this.setState({
 			...this.state,
-			addCardFormVisible: show
+			formVisible: show,
+			value: ""
+
 		});	
 	}
 
 	renderAddCardIdle = (props) => {
 
 		return (
-			<input className="addCardButton" type="button" onClick={() => this.setShowAddCardForm(true)} value="+ Add Another list" />
+			<input className="addCardButton" type="button" onClick={() => this.setShowForm(true)} value="+ Add another card" />
 		);
 	}
 
@@ -61,10 +63,10 @@ class AddCardForm extends React.Component {
 		return (
 
 			<form className="addCardForm" onSubmit={this.onSubmitHandle}>
-				<input type="text" placeholder="Introduce the name of the list..." onKeyUp={(e) => this.onKeyUpHandle(e)} />
+				<input type="text" className="newCardName" placeholder="Enter a title for this card..." onKeyUp={(e) => this.onKeyUpHandle(e)} />
 				<div className="addCardFormButtons">
-					<input type="submit" className="addCardSubmit" value="Add list" />
-					<input type="button" className="addCardCloseButton" value="X" onClick={() => this.setShowAddCardForm(false)} />
+					<input type="submit" className="addCardSubmit" value="Add card" />
+					<input type="button" className="addCardCloseButton" value="X" onClick={() => this.setShowForm(false)} />
 				</div>
 			</form>
 		);
@@ -72,8 +74,8 @@ class AddCardForm extends React.Component {
 
 	render() {
 		return (
-			<li className={this.state.addCardFormVisible ? "addCardColumn" : "addCardColumnIdle"}>
-				{this.state.addCardFormVisible ? this.renderAddCardForm(this.props) : this.renderAddCardIdle(this.props)}
+			<li className={this.state.formVisible ? "addCard" : "addCardIdle"}>
+				{this.state.formVisible ? this.renderAddCardForm(this.props) : this.renderAddCardIdle(this.props)}
 			</li>
 		)
 	};

@@ -11,7 +11,7 @@ class AddListForm extends React.Component {
 
 		this.state = {
 			value: '',
-			addListFormVisible: false
+			formVisible: false
 		};
 	}
 
@@ -21,6 +21,7 @@ class AddListForm extends React.Component {
 
 		if (this.state.value && this.state.value.trim()) {
 			this.props.addList(this.state.value.trim());
+			this.setShowForm(false);
 		}
 	}
 
@@ -31,7 +32,7 @@ class AddListForm extends React.Component {
 				...this.state,
 				value: ""
 			});
-			this.props.hideAddListForm();
+			this.setShowForm(false);
 			return;
 		}
 
@@ -41,10 +42,18 @@ class AddListForm extends React.Component {
 		});
 	};
 
+	setShowForm = (show) => {
+		this.setState({
+			...this.state,
+			formVisible: show,
+			value: ""
+		});	
+	}
+
 	renderAddListIdle = (props) => {
 
 		return (
-			<input id="addListButton" type="button" onClick={() => props.showAddListForm()} value="+ Add Another list" />
+			<input id="addListButton" type="button" onClick={() => this.setShowForm(true)} value="+ Add Another list" />
 		);
 	}
 
@@ -53,10 +62,10 @@ class AddListForm extends React.Component {
 		return (
 
 			<form id="addListForm" onSubmit={this.onSubmitHandle}>
-				<input type="text" name="newListName" id="newListName" placeholder="Introduce the name of the list..." onKeyUp={(e) => this.onKeyUpHandle(e)} />
+				<input type="text" name="newListName" id="newListName" placeholder="Enter list title..." onKeyUp={(e) => this.onKeyUpHandle(e)} />
 				<div id="addListFormButtons">
 					<input type="submit" id="addListSubmit" value="Add list" />
-					<input type="button" id="addListCloseButton" value="X" onClick={() => props.hideAddListForm()} />
+					<input type="button" id="addListCloseButton" value="X" onClick={() => this.setShowForm(false)} />
 				</div>
 			</form>
 		);
@@ -64,36 +73,17 @@ class AddListForm extends React.Component {
 
 	render() {
 		return (
-			<li id="addListColumn" className={this.props.addListFormVisible ? "addListColumn" : "addListColumnIdle"}>
-				{this.props.addListFormVisible ? this.renderAddListForm(this.props) : this.renderAddListIdle(this.props)}
+			<li id="addListColumn" className={this.state.formVisible ? "addListColumn" : "addListColumnIdle"}>
+				{this.state.formVisible ? this.renderAddListForm(this.props) : this.renderAddListIdle(this.props)}
 			</li>
 		)
 	};
 }
 
-
-
-
-
 const mapStateToProps = (state) => ({
-	addListFormVisible: state.addListFormVisible
 });
 
 const mapDispatchToProps = (dispatch) => ({
-
-	showAddListForm: () => {
-		console.log('dispatch ADD_LIST_FORM_SHOW');
-		dispatch({
-			type: 'ADD_LIST_FORM_SHOW'
-		});
-	},
-
-	hideAddListForm: () => {
-		console.log('dispatch ADD_LIST_FORM_HIDE');
-		dispatch({
-			type: 'ADD_LIST_FORM_HIDE'
-		});
-	},
 
 	addList: (title) => {
 		console.log('dispatch ADD_LIST');
