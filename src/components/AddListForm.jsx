@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './AddListForm.css';
 
-const introKeyCode = 13;
 const escapeKeyCode = 27;
 
 class AddListForm extends React.Component {
@@ -26,7 +25,6 @@ class AddListForm extends React.Component {
 	}
 
 	onKeyUpHandle = (e) => {
-		console.log('key up', e.keyCode);
 		
 		if (e.keyCode === escapeKeyCode) {
 			this.setState({
@@ -34,6 +32,7 @@ class AddListForm extends React.Component {
 				value: ""
 			});
 			this.props.hideAddListForm();
+			return;
 		}
 
 		this.setState({
@@ -42,14 +41,14 @@ class AddListForm extends React.Component {
 		});
 	};
 
-	RenderAddListButton = (props) => {
+	renderAddListIdle = (props) => {
 
 		return (
 			<input id="addListButton" type="button" onClick={() => props.showAddListForm()} value="+ Add Another list" />
 		);
 	}
 
-	RenderAddListForm = (props) => {
+	renderAddListForm = (props) => {
 
 		return (
 
@@ -66,7 +65,7 @@ class AddListForm extends React.Component {
 	render() {
 		return (
 			<li id="addListColumn" className={this.props.addListFormVisible ? "addListColumn" : "addListColumnIdle"}>
-				{this.props.addListFormVisible ? this.RenderAddListForm(this.props) : this.RenderAddListButton(this.props)}
+				{this.props.addListFormVisible ? this.renderAddListForm(this.props) : this.renderAddListIdle(this.props)}
 			</li>
 		)
 	};
