@@ -8,7 +8,12 @@ function List(props) {
 
 	return (
 		<li className="list">
-			<div className="listTitle">{props.list.title}</div>
+			<div className="listTitle">
+				<input type="button" value="-" onClick={() => props.removeList(props.list.id)} />
+				<div>
+					{props.list.title}
+				</div>
+			</div>
 			<ul>
 				{props.cards.map((c, i) => (
 					<Card card={c} key={i} />
@@ -25,6 +30,14 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+
+	removeList: (listId) => {
+
+		dispatch({
+			type: 'REMOVE_LIST',
+			listId: listId,
+		});
+	}
 })
 
 const connected = connect(mapStateToProps, mapDispatchToProps)(List);

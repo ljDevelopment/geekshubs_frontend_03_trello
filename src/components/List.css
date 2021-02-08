@@ -10,6 +10,13 @@
 
 .listTitle {
 	font-weight: bold;
+	display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.listTitle * {
+	margin: 2px;
 }
 
 .addCardButton {
