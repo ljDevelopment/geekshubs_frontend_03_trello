@@ -24,18 +24,7 @@ function reducer(state = initialState, action) {
 	console.log('reducer. action:', action);
 
 	switch (action.type) {
-		case 'ADD_ITEM':
-			return {
-				...state,
-				board: state.board.map(
-					(element) => {
-						if (element.id === action.listId) {
-							element.cards.push(action.payload);
-						}
-						return element;
-					}
-				)
-			}
+
 
 		case 'ADD_LIST':
 			return {
@@ -52,7 +41,34 @@ function reducer(state = initialState, action) {
 		case 'REMOVE_LIST':
 			return {
 				...state,
-				board: state.board.filter(l => l.id != action.listId)
+				board: state.board.filter(l => l.id !== action.listId)
+			}
+
+		case 'REMOVE_CARD':
+			return {
+				...state,
+				board: state.board.map(
+					(element) => {
+						element = {
+							...element,
+							cards: element.cards.filter(c => c.id !== action.cardId)
+						}
+						return element;
+					}
+				)
+			}
+
+		case 'ADD_CARD':
+			return {
+				...state,
+				board: state.board.map(
+					(element) => {
+						if (element.id === action.listId) {
+							element.cards.push(action.payload);
+						}
+						return element;
+					}
+				)
 			}
 
 		default:

@@ -6,4 +6,9 @@
 	padding: 0.5em;
 	background-color: #fff;
 	box-shadow: 0 1px 0 rgba(9,30,66,.25);
+	align-items: flex-start;
+}
+
+.Card * {
+	margin: 2px;
 }

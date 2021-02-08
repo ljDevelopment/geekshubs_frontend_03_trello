@@ -91,7 +91,7 @@ const mapDispatchToProps = (dispatch) => ({
 	addCard: (listId, text) => {
 
 		dispatch({
-			type: 'ADD_ITEM',
+			type: 'ADD_CARD',
 			listId: listId,
 			payload:
 			{
