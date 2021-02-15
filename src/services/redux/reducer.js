@@ -71,6 +71,47 @@ function reducer(state = initialState, action) {
 				)
 			}
 
+		case 'MOVE':
+			const { sourceListId, sourceIndex, destinationListId, destinationIndex } = action;
+
+			if (sourceListId == destinationListId
+				&& sourceIndex == destinationIndex) {
+				return state;
+			}
+
+			let sourceListIndex, sourceList, sourceCards;
+			state.board.forEach((e, i) => {
+
+				if (e.id == sourceListId) {
+
+					sourceListIndex = i;
+					sourceList = e;
+					sourceCards = e.cards;
+				}
+			});
+
+			if (sourceListId == destinationListId) {
+
+				sourceCards.splice(destinationIndex, 0, sourceCards.splice(sourceIndex, 1)[0])
+				return state;
+			}
+
+			let destinationListIndex, destinationList, destinationCards;
+			state.board.forEach((e, i) => {
+
+				if (e.id == destinationListId) {
+
+					destinationListIndex = i;
+					destinationList = e;
+					destinationCards = e.cards;
+				}
+			});
+
+			destinationCards.splice(destinationIndex, 0, sourceCards[sourceIndex]);
+			sourceCards.splice(sourceIndex, 1);
+
+			return state;
+
 		default:
 			return state;
 	}

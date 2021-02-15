@@ -10,9 +10,16 @@ class List extends React.Component {
 	render() {
 		return (
 			<li className="list">
+
+				<div className="listTitle">
+					<input type="button" value="-" onClick={() => this.props.removeList(this.props.list.id)} />
+					<div>
+						{this.props.list.title}
+					</div>
+				</div>
 				<Droppable droppableId={this.props.list.id.toString()}>
 					{(provided, snapshot) => (
-						<div
+						<ul
 							ref={provided.innerRef}
 						>
 							{this.props.cards.map((c, i) => (
@@ -26,27 +33,16 @@ class List extends React.Component {
 											{...provided.draggableProps}
 											{...provided.dragHandleProps}
 										>
-											{c.text}
+											<Card card={c} key={i} />
 										</div>
 									)}
 								</Draggable>
 							))}
 
-						</div>
+							<AddCardForm listId={this.props.listId} />
+						</ul>
 					)}
 				</Droppable>
-				<div className="listTitle">
-					<input type="button" value="-" onClick={() => this.props.removeList(this.props.list.id)} />
-					<div>
-						{this.props.list.title}
-					</div>
-				</div>
-				<ul>
-					{this.props.cards.map((c, i) => (
-						<Card card={c} key={i} />
-					))}
-					<AddCardForm listId={this.props.listId} />
-				</ul>
 			</li>
 		);
 	}

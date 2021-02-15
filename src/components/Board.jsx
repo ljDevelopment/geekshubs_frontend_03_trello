@@ -10,6 +10,19 @@ class Board extends React.Component {
 
 	onDragEnd = result => {
 		console.log(result);
+		const { source, destination } = result;
+
+		if (!destination) {
+			return;
+		}
+
+		const sourceListId = source.droppableId;
+		const sourceIndex = source.index;
+		const destinationListId = destination.droppableId;
+		const destinationIndex = destination.index;
+		
+
+		this.props.move({sourceListId, sourceIndex, destinationListId, destinationIndex});
 	}
 
 	render() {
@@ -34,6 +47,13 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+	move: ({sourceListId, sourceIndex, destinationListId, destinationIndex}) => {
+
+		dispatch({
+			type: 'MOVE',
+			...{sourceListId, sourceIndex, destinationListId, destinationIndex}
+		});
+	}
 });
 
 const connected = connect(mapStateToProps, mapDispatchToProps)(Board);
