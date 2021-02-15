@@ -3,16 +3,18 @@ import { connect } from 'react-redux';
 import './Board.css';
 import AddListForm from './AddListForm'
 import List from './List'
+import { DragDropContext } from 'react-beautiful-dnd';
 
-
+//https://github.com/atlassian/react-beautiful-dnd/blob/master/docs/about/installation.md
 class Board extends React.Component {
 
-	constructor(props) {
-		super(props);
+	onDragEnd = result => {
+		console.log(result);
 	}
 
 	render() {
 		return (
+			<DragDropContext onDragEnd={this.onDragEnd}>
 			<div className='board'>
 				<ul>
 					{this.props.board.map((list, i) => (
@@ -21,6 +23,7 @@ class Board extends React.Component {
 					<AddListForm />
 				</ul>
 			</div>
+			</DragDropContext>
 		)
 	};
 }

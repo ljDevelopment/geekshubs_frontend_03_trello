@@ -3,26 +3,55 @@ import { connect } from 'react-redux';
 import './List.css';
 import Card from './Card'
 import AddCardForm from './AddCardForm'
+import { Droppable, Draggable } from 'react-beautiful-dnd';
 
-function List(props) {
+class List extends React.Component {
 
-	return (
-		<li className="list">
-			<div className="listTitle">
-				<input type="button" value="-" onClick={() => props.removeList(props.list.id)} />
-				<div>
-					{props.list.title}
+	render() {
+		return (
+			<li className="list">
+				<Droppable droppableId={this.props.list.id.toString()}>
+					{(provided, snapshot) => (
+						<div
+							ref={provided.innerRef}
+						>
+							{this.props.cards.map((c, i) => (
+								<Draggable
+									key={c.id}
+									draggableId={c.id.toString()}
+									index={i}>
+									{(provided, snapshot) => (
+										<div
+											ref={provided.innerRef}
+											{...provided.draggableProps}
+											{...provided.dragHandleProps}
+										>
+											{c.text}
+										</div>
+									)}
+								</Draggable>
+							))}
+
+						</div>
+					)}
+				</Droppable>
+				<div className="listTitle">
+					<input type="button" value="-" onClick={() => this.props.removeList(this.props.list.id)} />
+					<div>
+						{this.props.list.title}
+					</div>
 				</div>
-			</div>
-			<ul>
-				{props.cards.map((c, i) => (
-					<Card card={c} key={i} />
-				))}
-				<AddCardForm listId={props.listId} />
-			</ul>
-		</li>
-	);
+				<ul>
+					{this.props.cards.map((c, i) => (
+						<Card card={c} key={i} />
+					))}
+					<AddCardForm listId={this.props.listId} />
+				</ul>
+			</li>
+		);
+	}
 }
+
 const mapStateToProps = (state, props) => ({
 	board: state.board,
 	list: state.board.find(e => e.id === props.listId),
