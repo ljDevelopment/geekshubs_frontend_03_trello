@@ -64,7 +64,14 @@ function reducer(state = initialState, action) {
 				board: state.board.map(
 					(element) => {
 						if (element.id === action.listId) {
-							element.cards.push(action.payload);
+							
+							const cards = [...element.cards];
+							cards.push(action.payload);
+							
+							return {
+								...element,
+								cards: cards
+							}
 						}
 						return element;	
 					}
