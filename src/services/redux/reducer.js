@@ -66,7 +66,7 @@ function reducer(state = initialState, action) {
 						if (element.id === action.listId) {
 							element.cards.push(action.payload);
 						}
-						return element;
+						return element;	
 					}
 				)
 			}
@@ -79,38 +79,42 @@ function reducer(state = initialState, action) {
 				return state;
 			}
 
-			let sourceListIndex, sourceList, sourceCards;
-			state.board.forEach((e, i) => {
+			let element = null;
+			let destinationListIndex = -1;
+			const newState = {
+				...state,
+				board : state.board.map((e, i) => {
 
-				if (e.id == sourceListId) {
+					if (e.id == destinationListId)
+					{
+						destinationListIndex = i;
+					}
+					
+					if (e.id != sourceListId) {
+						return e;
+					}
 
-					sourceListIndex = i;
-					sourceList = e;
-					sourceCards = e.cards;
-				}
-			});
+					element = e.cards[sourceIndex];
 
-			if (sourceListId == destinationListId) {
+					const copy = {
+						...e,
+						cards: [...e.cards]
+					};  
+					copy.cards.splice(sourceIndex, 1);
 
-				sourceCards.splice(destinationIndex, 0, sourceCards.splice(sourceIndex, 1)[0])
-				return state;
+					return copy;
+				})
 			}
 
-			let destinationListIndex, destinationList, destinationCards;
-			state.board.forEach((e, i) => {
+			let destinationIndexAdapted =
+				(sourceListId != destinationListId || destinationIndex < sourceIndex)
+					? destinationIndex
+					: destinationIndex - 1; // same list, later index but already removed the element, so -1
 
-				if (e.id == destinationListId) {
+			newState.board[destinationListIndex].cards = [...newState.board[destinationListIndex].cards]
+			newState.board[destinationListIndex].cards.splice(destinationIndexAdapted, 0, element);
 
-					destinationListIndex = i;
-					destinationList = e;
-					destinationCards = e.cards;
-				}
-			});
-
-			destinationCards.splice(destinationIndex, 0, sourceCards[sourceIndex]);
-			sourceCards.splice(sourceIndex, 1);
-
-			return state;
+			return newState;
 
 		default:
 			return state;
