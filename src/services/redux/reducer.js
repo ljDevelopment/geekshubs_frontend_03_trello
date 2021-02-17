@@ -64,7 +64,7 @@ function reducer(state = initialState, action) {
 				board: state.board.map(
 					(element) => {
 						if (element.id === action.listId) {
-							
+
 							const cards = [...element.cards];
 							cards.push(action.payload);
 							
@@ -113,13 +113,8 @@ function reducer(state = initialState, action) {
 				})
 			}
 
-			let destinationIndexAdapted =
-				(sourceListId != destinationListId || destinationIndex < sourceIndex)
-					? destinationIndex
-					: destinationIndex - 1; // same list, later index but already removed the element, so -1
-
 			newState.board[destinationListIndex].cards = [...newState.board[destinationListIndex].cards]
-			newState.board[destinationListIndex].cards.splice(destinationIndexAdapted, 0, element);
+			newState.board[destinationListIndex].cards.splice(destinationIndex, 0, element);
 
 			return newState;
 
