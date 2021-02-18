@@ -1,30 +1,11 @@
 const initialState = {
 	board: [
-		{
-			id: 0,
-			title: "list1",
-			cards:
-				[
-					{
-						id: 0,
-						text: 'todo00',
-						completed: false
-					},
-					{
-						id: 1,
-						text: 'todo01',
-						completed: false
-					}
-				]
-		},
 	]
 };
 
 function reducer(state = initialState, action) {
-	console.log('reducer. action:', action);
 
 	switch (action.type) {
-
 
 		case 'ADD_LIST':
 			return {

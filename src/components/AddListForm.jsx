@@ -53,7 +53,7 @@ class AddListForm extends React.Component {
 	renderAddListIdle = (props) => {
 
 		return (
-			<input id="addListButton" type="button" onClick={() => this.setShowForm(true)} value="+ Add Another list" />
+			<input id="addListButton" type="button" onClick={() => this.setShowForm(true)} value="+ Add another list" />
 		);
 	}
 
