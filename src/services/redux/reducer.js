@@ -46,12 +46,12 @@ function reducer(state = initialState, action) {
 					(element) => {
 						if (element.id === action.listId) {
 
-							const cards = [...element.cards];
-							cards.push(action.payload);
-							
 							return {
 								...element,
-								cards: cards
+								cards: [
+									...element.cards,
+									{...action.payload}
+								]
 							}
 						}
 						return element;	
