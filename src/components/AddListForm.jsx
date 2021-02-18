@@ -28,10 +28,7 @@ class AddListForm extends React.Component {
 	onKeyUpHandle = (e) => {
 		
 		if (e.keyCode === escapeKeyCode) {
-			this.setState({
-				...this.state,
-				value: ""
-			});
+			
 			this.setShowForm(false);
 			return;
 		}

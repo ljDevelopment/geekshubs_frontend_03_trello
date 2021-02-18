@@ -28,10 +28,6 @@ class AddCardForm extends React.Component {
 	onKeyUpHandle = (e) => {
 		
 		if (e.keyCode === escapeKeyCode) {
-			this.setState({
-				...this.state,
-				value: ""
-			});
 			this.setShowForm(false);
 			return;
 		}
@@ -43,6 +39,7 @@ class AddCardForm extends React.Component {
 	};
 
 	setShowForm = (show) => {
+		
 		this.setState({
 			...this.state,
 			formVisible: show,
@@ -97,7 +94,6 @@ const mapDispatchToProps = (dispatch) => ({
 			{
 				id: Date.now(),
 				text: text,
-				completed: false
 			}
 		});
 	}
