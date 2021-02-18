@@ -1,5 +1,5 @@
 
-#  2020-11 - Frontend - Challenge 2
+#  2020-11 - Frontend - Challenge 3
 
  - **Author**: Luis Javier López Arredondo
  - **Technologies**:  HTML5, CSS3, GIT, JS ES6, REACT-REDUX, Flexbox
