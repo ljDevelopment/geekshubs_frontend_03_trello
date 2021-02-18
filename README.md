@@ -1,6 +1,17 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#  2020-11 - Frontend - Challenge 2
+
+ - **Author**: Luis Javier López Arredondo
+ - **Technologies**:  HTML5, CSS3, GIT, JS ES6, REACT-REDUX, Flexbox
+ - **Abstract**: Third challenge for the course *2020-11- Frontend* at [GeeksHubs](https://geekshubs.com/), create a basic Trello kind todo cards manger. Description for the requirements of the challenge can be found in [Reto 2 - Showcase - BTC Frontend.pdf](Reto%203%20-%20Trello%20-%20BTC%20Frontend.pdf).
+
+### Evaluation notes
+  - Javascript ES6.
+  - All requirements implemented (add / remove list, add / remove card, move cards).
+  - Drag & drop using [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd).
+  - No action dispatcher.
+  - Extra: REACT-REDUX.
+  - Extra: Flexbox
 
 ## Available Scripts
 
