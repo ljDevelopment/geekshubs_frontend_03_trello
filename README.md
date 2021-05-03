@@ -3,7 +3,7 @@
 
  - **Author**: Luis Javier López Arredondo
  - **Technologies**:  HTML5, CSS3, GIT, JS ES6, REACT-REDUX, Flexbox
- - **Abstract**: Third challenge for the course *2020-11- Frontend* at [GeeksHubs](https://geekshubs.com/), create a basic Trello kind todo cards manger. Description for the requirements of the challenge can be found in [Reto 2 - Showcase - BTC Frontend.pdf](Reto%203%20-%20Trello%20-%20BTC%20Frontend.pdf).
+ - **Abstract**: Third challenge for the course *2020-11- Frontend* at [GeeksHubs](https://geekshubs.com/), create a basic Trello kind todo cards manger. Description for the requirements of the challenge can be found in [Reto 3 - Trello - BTC Frontend.pdf](Reto%203%20-%20Trello%20-%20BTC%20Frontend.pdf).
 
 ### Evaluation notes
   - Javascript ES6.
